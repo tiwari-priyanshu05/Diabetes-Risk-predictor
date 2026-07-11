@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiaPredict | AI Health Screening</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-top-bg"></div>
+            <div class="sidebar-bottom-bg"></div>
+            
+            <div class="logo">
+                <div><i class="fa-solid fa-heart-pulse"></i> DiaPredict</div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-target="view-dashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
+                <a href="#" class="nav-item" data-target="view-assessment"><i class="fa-solid fa-clipboard-check"></i> Assessment</a>
+                <a href="#" class="nav-item" data-target="view-health-tips"><i class="fa-regular fa-heart"></i> Health Tips</a>
+                <a href="#" class="nav-item" data-target="view-about"><i class="fa-solid fa-circle-info"></i> About Us</a>
+            </nav>
+
+            <div class="sidebar-section">
+                <h4>WHY CHOOSE DIAPREDICT?</h4>
+                <div class="why-item">
+                    <i class="fa-solid fa-bolt" style="color: #F59E0B;"></i>
+                    <div>
+                        <strong>Real-time Metrics</strong>
+                        <p>Results in seconds</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <i class="fa-solid fa-brain" style="color: #D946EF;"></i>
+                    <div>
+                        <strong>Smart Algorithms</strong>
+                        <p>Trained on advanced ML models</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <i class="fa-solid fa-lock" style="color: #10B981;"></i>
+                    <div>
+                        <strong>Secure Data</strong>
+                        <p>Your data is safe and secure</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h4>MODEL METRICS</h4>
+                <div class="perf-metric">
+                    <div class="perf-icon" style="background: rgba(245,158,11,0.15); color: #F59E0B;"><i class="fa-solid fa-bullseye"></i></div>
+                    <div class="perf-info">
+                        <strong>98.4% Accuracy</strong>
+                        <span>Cross-validated F1: 0.96</span>
+                    </div>
+                </div>
+                <div class="perf-metric" style="margin-top: 0.75rem;">
+                    <div class="perf-icon" style="background: rgba(56,189,248,0.15); color: #38BDF8;"><i class="fa-solid fa-database"></i></div>
+                    <div class="perf-info">
+                        <strong>14.5k+ Profiles</strong>
+                        <span>Training dataset size</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h4>GLOBAL INSIGHT</h4>
+                <div class="global-stat-card" style="background: rgba(168, 85, 247, 0.1); border: 1px dashed rgba(168, 85, 247, 0.3); padding: 0.75rem; border-radius: 8px;">
+                    <i class="fa-solid fa-earth-americas" style="color: #A855F7; margin-bottom: 0.4rem; font-size: 1rem;"></i>
+                    <p style="font-size: 0.7rem; color: #E2E8F0; line-height: 1.4;">Over <strong>537 million</strong> adults are living with diabetes globally. Early detection is crucial.</p>
+                </div>
+            </div>
+
+            <div class="system-status-card" style="margin-top:auto; position:relative; z-index:2;">
+                <div class="status-header">
+                    <div class="pulsing-dot"></div>
+                    <span>System Status</span>
+                </div>
+                <div class="status-details">
+                    <div class="status-row"><span>AI Engine:</span> <span style="color:#10B981;">Online</span></div>
+                    <div class="status-row"><span>API Latency:</span> <span style="color:#38BDF8;">12ms</span></div>
+                    <div class="status-row"><span>Data Encrypted:</span> <span style="color:#A855F7;">Active</span></div>
+                </div>
+            </div>
+            
+            <div class="copyright" style="position:relative; z-index:2; margin-top:1rem;">© 2026 DiaPredict AI</div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- VIEW: DASHBOARD -->
+            <div class="view-section active-view" id="view-dashboard">
+                <header class="hero-section">
+                    <div class="hero-content">
+                        <span class="welcome-text">Welcome to <span style="color: #38BDF8;">DiaPredict</span></span>
+                        <h1 class="gradient-text">Understand Your Risk.<br>Act with Confidence.</h1>
+                        <p>Get an AI-driven perspective on your diabetes risk.</p>
+                        
+                        <div class="hero-badges">
+                            <div class="badge">
+                                <div class="icon" style="background: rgba(139,92,246,0.2); color: #A78BFA;"><i class="fa-solid fa-bolt"></i></div>
+                                <div class="info"><strong>Predictive Health</strong></div>
+                            </div>
+                            <div class="badge">
+                                <div class="icon" style="background: rgba(56,189,248,0.2); color: #38BDF8;"><i class="fa-solid fa-brain"></i></div>
+                                <div class="info"><strong>AI-Driven Insights</strong></div>
+                            </div>
+                            <div class="badge">
+                                <div class="icon" style="background: rgba(16,185,129,0.2); color: #34D399;"><i class="fa-solid fa-shield-halved"></i></div>
+                                <div class="info"><strong>Data Protection</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-right">
+                        <div class="hero-image">
+                            <div class="glow-avatar-placeholder">
+                                <i class="fa-solid fa-person" style="font-size: 8rem; color: #38BDF8; filter: drop-shadow(0 0 25px #38BDF8);"></i>
+                                <div class="platform"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card">
+                            <div class="insight-icon"><i class="fa-regular fa-lightbulb"></i></div>
+                            <strong>Insight of the Day</strong>
+                            <p>Moderate exercise can significantly improve insulin sensitivity.</p>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="dashboard-widgets">
+                    <!-- Top Risk Factors -->
+                    <div class="dashboard-card utility-card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-ranking-star" style="color:var(--primary);"></i>
+                            <h3>Top Model Risk Factors</h3>
+                        </div>
+                        <p class="utility-desc">These are the key health metrics our AI model weights most heavily during prediction.</p>
+                        
+                        <div class="feature-bars">
+                            <div class="feature-item">
+                                <div class="feature-label"><span>HbA1c Level</span> <span>92%</span></div>
+                                <div class="feature-track"><div class="feature-fill" style="width: 92%; background: #EF4444;"></div></div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label"><span>Fasting Glucose</span> <span>85%</span></div>
+                                <div class="feature-track"><div class="feature-fill" style="width: 85%; background: #F59E0B;"></div></div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label"><span>BMI</span> <span>70%</span></div>
+                                <div class="feature-track"><div class="feature-fill" style="width: 70%; background: #38BDF8;"></div></div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label"><span>Age</span> <span>65%</span></div>
+                                <div class="feature-track"><div class="feature-fill" style="width: 65%; background: #A855F7;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick BMI Calculator -->
+                    <div class="dashboard-card utility-card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-calculator" style="color:var(--secondary);"></i>
+                            <h3>Quick BMI Utility</h3>
+                        </div>
+                        <p class="utility-desc">Calculate your Body Mass Index quickly before starting the full assessment.</p>
+                        
+                        <div class="bmi-calc">
+                            <div class="bmi-inputs">
+                                <div class="input-with-unit" style="margin-bottom:0.5rem;">
+                                    <input type="number" id="quickWeight" placeholder="Weight" min="1">
+                                    <span class="unit">kg</span>
+                                </div>
+                                <div class="input-with-unit">
+                                    <input type="number" id="quickHeight" placeholder="Height" min="1">
+                                    <span class="unit">cm</span>
+                                </div>
+                            </div>
+                            <button class="bmi-btn" id="calcBmiBtn">Calculate BMI</button>
+                            <div class="bmi-result-display" id="bmiResultDisplay">
+                                <span class="bmi-val" id="bmiVal">--</span>
+                                <span class="bmi-label" id="bmiLabel">Enter details</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Card -->
+                    <div class="dashboard-card action-card">
+                        <div class="action-content">
+                            <i class="fa-solid fa-clipboard-check action-icon"></i>
+                            <h3>Ready for your Analysis?</h3>
+                            <p>Our model requires 14 specific medical and lifestyle data points to generate an accurate risk profile.</p>
+                            <button class="nav-btn-large" id="startAssessmentBtn">
+                                Start Full Assessment <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="bg-shape bg-shape-1"></div>
+                        <div class="bg-shape bg-shape-2"></div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Table -->
+                <div class="dashboard-card table-card" style="margin-top:1.5rem;">
+                    <div class="card-header">
+                        <i class="fa-solid fa-clock-rotate-left" style="color:#10B981;"></i>
+                        <h3>Recent Anonymous Screenings</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="activity-table">
+                            <thead>
+                                <tr>
+                                    <th>Patient Profile</th>
+                                    <th>Key Indicators</th>
+                                    <th>Risk Level</th>
+                                    <th>Model Confidence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="td-profile">
+                                            <div class="avatar" style="background: rgba(56,189,248,0.2); color: #38BDF8;">M</div>
+                                            <div>
+                                                <strong>Male, 45 yrs</strong>
+                                                <span>BMI: 28.5</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>HbA1c: 6.2% | Glucose: 110</td>
+                                    <td><span class="status-badge warning">Prediabetes</span></td>
+                                    <td>94%</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="td-profile">
+                                            <div class="avatar" style="background: rgba(16,185,129,0.2); color: #10B981;">F</div>
+                                            <div>
+                                                <strong>Female, 32 yrs</strong>
+                                                <span>BMI: 22.1</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>HbA1c: 5.1% | Glucose: 85</td>
+                                    <td><span class="status-badge success">Low Risk</span></td>
+                                    <td>98%</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="td-profile">
+                                            <div class="avatar" style="background: rgba(239,68,68,0.2); color: #EF4444;">M</div>
+                                            <div>
+                                                <strong>Male, 58 yrs</strong>
+                                                <span>BMI: 31.0</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>HbA1c: 7.5% | Glucose: 145</td>
+                                    <td><span class="status-badge danger">High Risk</span></td>
+                                    <td>91%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- VIEW: ASSESSMENT (Form + Results) -->
+            <div class="view-section" id="view-assessment">
+                <div class="content-grid">
+                    <!-- Left: Form -->
+                    <div class="form-container">
+                        <div class="section-header">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                            <h2>Detailed Health Assessment</h2>
+                        </div>
+
+                        <form id="predictionForm">
+                            <div class="form-cards">
+                                <!-- Card 1: Biometrics -->
+                                <div class="form-card">
+                                    <h3 class="card-title"><i class="fa-solid fa-user" style="color:#A855F7;"></i> Biometrics</h3>
+                                    <div class="input-grid">
+                                        <div class="form-group">
+                                            <label for="age">Age</label>
+                                            <div class="select-wrapper">
+                                                <input type="number" id="age" name="age" value="30" min="1" max="120" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="gender">Gender</label>
+                                            <div class="select-wrapper">
+                                                <select id="gender" name="gender">
+                                                    <option value="Female">Female</option>
+                                                    <option value="Male">Male</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bmi">BMI</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="bmi" name="bmi" value="25.00" step="0.1" required>
+                                                <span class="unit">kg/m²</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 2: Vital Signs -->
+                                <div class="form-card">
+                                    <h3 class="card-title"><i class="fa-solid fa-wave-square" style="color:#EC4899;"></i> Vital Signs</h3>
+                                    <div class="input-grid">
+                                        <div class="form-group">
+                                            <label for="blood_pressure">Blood Pressure</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="blood_pressure" name="blood_pressure" value="120" required>
+                                                <span class="unit">mmHg</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="diastolic">Diastolic (Optional)</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="diastolic" name="diastolic" value="80">
+                                                <span class="unit">mmHg</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fasting_glucose">Fasting Glucose</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="fasting_glucose" name="fasting_glucose" value="100" required>
+                                                <span class="unit">mg/dL</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="hba1c">HbA1c</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="hba1c" name="hba1c" value="5.50" step="0.1" required>
+                                                <span class="unit">%</span>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="insulin" name="insulin" value="15.0">
+                                    </div>
+                                </div>
+
+                                <!-- Card 3: Lifestyle -->
+                                <div class="form-card">
+                                    <h3 class="card-title"><i class="fa-solid fa-person-running" style="color:#10B981;"></i> Lifestyle</h3>
+                                    <div class="input-grid">
+                                        <div class="form-group">
+                                            <label for="activity">Physical Activity</label>
+                                            <div class="select-wrapper">
+                                                <select id="activity" name="activity">
+                                                    <option value="Low">Low</option>
+                                                    <option value="Moderate" selected>Moderate</option>
+                                                    <option value="High">High</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="calories">Daily Calories</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="calories" name="calories" value="2000" required>
+                                                <span class="unit">kcal</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sugar">Sugar Intake (g)</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="sugar" name="sugar" value="50.00" step="0.1" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sleep">Sleep Hours</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="sleep" name="sleep" value="7.00" step="0.1" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="margin-top: 1.5rem;">
+                                        <label for="stress">Stress Level</label>
+                                        <div class="stress-container">
+                                            <input type="range" id="stress" name="stress" min="1" max="10" value="5" class="styled-slider">
+                                            <div class="stress-value-indicator" id="stressBadge">5</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 4: Medical -->
+                                <div class="form-card">
+                                    <h3 class="card-title"><i class="fa-solid fa-plus-square" style="color:#38BDF8;"></i> Medical & History</h3>
+                                    <div class="input-grid">
+                                        <div class="form-group">
+                                            <label for="cholesterol">Cholesterol</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="cholesterol" name="cholesterol" value="180" required>
+                                                <span class="unit">mg/dL</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="triglycerides">Triglycerides</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="triglycerides" name="triglycerides" value="150" required>
+                                                <span class="unit">mg/dL</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="grid-column: span 2;">
+                                            <label for="family">Family History</label>
+                                            <div class="select-wrapper">
+                                                <select id="family" name="family">
+                                                    <option value="No">No</option>
+                                                    <option value="Yes">Yes</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="grid-column: span 2;">
+                                            <label for="waist">Waist Circumference</label>
+                                            <div class="input-with-unit">
+                                                <input type="number" id="waist" name="waist" value="90.00" step="0.1" required>
+                                                <span class="unit">cm</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <i class="fa-solid fa-rocket"></i> <span class="btn-text">Discover Your Risk Profile</span>
+                                <div class="loader" style="display: none;"></div>
+                            </button>
+                            <p class="form-footer-note"><i class="fa-solid fa-lock" style="color:var(--text-muted);"></i> Your data is processed securely and never stored.</p>
+                        </form>
+                    </div>
+
+                    <!-- Right: Results -->
+                    <div class="results-container">
+                        <div class="section-header">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <h2>Risk Analysis and Guidance</h2>
+                        </div>
+
+                        <div class="result-box" id="resultBox">
+                            <div class="risk-header-banner" style="border-color: rgba(148, 163, 184, 0.4); background: rgba(148, 163, 184, 0.1);">
+                                <div class="risk-title" style="color: var(--text-muted);">
+                                    <i class="fa-solid fa-clock"></i> DIABETES RISK: PENDING
+                                </div>
+                                <div class="risk-desc" style="color: var(--text-muted);">Please complete the assessment to view your personalized diabetes risk profile.</div>
+                            </div>
+
+                            <div class="gauge-and-benchmark">
+                                <div class="gauge-container">
+                                    <div class="semi-gauge">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="40" class="gauge-bg" stroke-dasharray="125.6 251.2" stroke-dashoffset="0"></circle>
+                                            <circle cx="50" cy="50" r="40" class="gauge-val" style="stroke: var(--border-color);" stroke-dasharray="125.6 251.2" stroke-dashoffset="125.6"></circle>
+                                        </svg>
+                                    </div>
+                                    <div class="gauge-text">
+                                        <h3 style="color: var(--text-muted);">0%</h3>
+                                        <span>Risk Score</span>
+                                    </div>
+                                    <div class="gauge-labels">
+                                        <span>0%</span>
+                                        <span>100%</span>
+                                    </div>
+                                </div>
+
+                                <div class="benchmarks">
+                                    <span>Risk Benchmarks</span>
+                                    <div class="bars-container">
+                                        <div class="bar-group">
+                                            <span class="bar-val" style="color: var(--text-muted);">0%</span>
+                                            <div class="bar" style="height: 0%; background: var(--border-color);"></div>
+                                            <span class="bar-label">Your Risk</span>
+                                        </div>
+                                        <div class="bar-group" style="margin-left: 2rem;">
+                                            <span class="bar-val" style="color: var(--text-muted);">0%</span>
+                                            <div class="bar" style="height: 0%; background: var(--border-color);"></div>
+                                            <span class="bar-label">Average Risk</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="stats-grid">
+                                <div class="stat-box">
+                                    <span>Risk Level</span>
+                                    <strong style="color: var(--text-muted);">Pending</strong>
+                                </div>
+                                <div class="stat-box">
+                                    <span>Confidence</span>
+                                    <div style="display:flex; align-items:center; gap:0.5rem; flex-direction:column;">
+                                        <strong style="color: var(--text-muted);">0%</strong>
+                                        <div class="confidence-svg">
+                                            <svg viewBox="0 0 24 24">
+                                                <circle cx="12" cy="12" r="10" class="conf-bg" stroke-dasharray="31.4 62.8" stroke-dashoffset="0"></circle>
+                                                <circle cx="12" cy="12" r="10" class="conf-val" style="stroke: var(--border-color);" stroke-dasharray="31.4 62.8" stroke-dashoffset="31.4"></circle>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-box">
+                                    <span>Health Score</span>
+                                    <strong style="color: var(--text-muted);">0 / 100</strong>
+                                </div>
+                                <div class="stat-box">
+                                    <span>Model Type</span>
+                                    <strong style="color: #F59E0B;">AI / ML</strong>
+                                </div>
+                            </div>
+
+                            <div class="rec-title"><i class="fa-solid fa-person-running" style="color: var(--text-muted);"></i> Personalized Prevention Steps</div>
+                            <div class="rec-grid">
+                                <div class="rec-card" style="opacity: 0.5;">
+                                    <div class="rec-card-header">
+                                        <div class="rec-icon" style="background: var(--border-color);"><i class="fa-solid fa-lock"></i></div>
+                                        <strong style="color: var(--text-muted);">Analysis Required</strong>
+                                    </div>
+                                    <p>Submit your assessment to unlock personalized lifestyle and diet recommendations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- VIEW: HEALTH TIPS -->
+            <div class="view-section" id="view-health-tips">
+                <div class="section-header">
+                    <i class="fa-regular fa-heart"></i>
+                    <h2>Health Library & Tips</h2>
+                </div>
+                <p style="color:var(--text-muted); margin-bottom:2rem;">Explore our comprehensive library of actionable advice to help manage and prevent diabetes through daily habits.</p>
+
+                <div class="tips-grid">
+                    <!-- Diet -->
+                    <div class="tip-card">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Healthy Diet">
+                        <div class="tip-content">
+                            <span class="tip-category" style="color:#10B981; background:rgba(16,185,129,0.1);">Diet & Nutrition</span>
+                            <h3>Managing the Glycemic Index</h3>
+                            <p>Focus on low-GI foods like whole oats, beans, and non-starchy vegetables. These foods break down slowly, keeping blood sugar levels stable throughout the day.</p>
+                        </div>
+                    </div>
+                    <!-- Exercise -->
+                    <div class="tip-card">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Exercise">
+                        <div class="tip-content">
+                            <span class="tip-category" style="color:#38BDF8; background:rgba(56,189,248,0.1);">Physical Activity</span>
+                            <h3>Cardio vs. Resistance Training</h3>
+                            <p>A combination of both is ideal! Cardio improves cardiovascular health, while resistance training builds muscle mass which naturally increases your body's glucose uptake.</p>
+                        </div>
+                    </div>
+                    <!-- Sleep -->
+                    <div class="tip-card">
+                        <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sleep">
+                        <div class="tip-content">
+                            <span class="tip-category" style="color:#A855F7; background:rgba(168,85,247,0.1);">Rest & Recovery</span>
+                            <h3>The Importance of Sleep</h3>
+                            <p>Poor sleep can disrupt your hormones, leading to increased insulin resistance and cravings for high-sugar foods. Aim for 7-8 hours of uninterrupted sleep every night.</p>
+                        </div>
+                    </div>
+                    <!-- Stress -->
+                    <div class="tip-card">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Meditation">
+                        <div class="tip-content">
+                            <span class="tip-category" style="color:#F59E0B; background:rgba(245,158,11,0.1);">Mental Health</span>
+                            <h3>Stress Management</h3>
+                            <p>Chronic stress releases cortisol and adrenaline, which elevate blood sugar levels. Try incorporating 10 minutes of daily meditation or deep breathing exercises.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- VIEW: ABOUT US -->
+            <div class="view-section" id="view-about">
+                <div class="section-header">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <h2>About the Project</h2>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3><i class="fa-solid fa-microchip" style="color:#38BDF8;"></i> The AI Engine</h3>
+                        <p>DiaPredict is powered by a robust Machine Learning algorithm trained on thousands of clinical records. The model analyzes 14 distinct biometric and lifestyle factors to detect patterns correlated with diabetes onset.</p>
+                        <br>
+                        <ul style="list-style:none; padding:0; color:var(--text-muted); font-size:0.85rem;">
+                            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:#10B981; margin-right:0.5rem;"></i> High Accuracy Random Forest Classifier</li>
+                            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:#10B981; margin-right:0.5rem;"></i> Validated against cross-sectional data</li>
+                            <li><i class="fa-solid fa-check" style="color:#10B981; margin-right:0.5rem;"></i> Real-time inference via Flask API</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-card">
+                        <h3><i class="fa-solid fa-shield-halved" style="color:#10B981;"></i> Privacy & Security</h3>
+                        <p>Your health data is highly sensitive. We have engineered DiaPredict to be completely stateless. None of the data you input is saved to a database or tracked. It is processed in memory for inference and immediately discarded.</p>
+                    </div>
+                </div>
+
+                <div class="section-header" style="margin-top:3rem;">
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Meet the Development Team</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://ui-avatars.com/api/?name=Madiha+Khan&background=random&color=fff&size=80" alt="Madiha">
+                        <h4>Madiha Khan</h4>
+                        <span>B.Tech AI & ML</span>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://ui-avatars.com/api/?name=Priyanshu+Tiwari&background=random&color=fff&size=80" alt="Priyanshu">
+                        <h4>Priyanshu Tiwari</h4>
+                        <span>B.Tech AI & ML</span>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://ui-avatars.com/api/?name=Anushka+Srivastava&background=random&color=fff&size=80" alt="Anushka">
+                        <h4>Anushka Srivastava</h4>
+                        <span>B.Tech AI & ML</span>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://ui-avatars.com/api/?name=Prakhar+Dwivedi&background=random&color=fff&size=80" alt="Prakhar">
+                        <h4>Prakhar Dwivedi</h4>
+                        <span>B.Tech AI & ML</span>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
